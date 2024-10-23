@@ -21,12 +21,13 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: 16.13.1
+          node-version: ^16.14.0
 
       # 打包代码
       - name: Build Project
         run: |
-          npm install
+          npm install pnpm
+          pnpm install
           npm run docs:build
 
       # 部署到github

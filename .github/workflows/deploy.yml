@@ -26,8 +26,7 @@ jobs:
       # 打包代码
       - name: Build Project
         run: |
-          npm install pnpm
-          pnpm install
+          npm install
           npm run docs:build
 
       # 部署到github

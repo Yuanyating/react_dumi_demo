@@ -2,7 +2,7 @@
 nav:
   title: 问题
   path: /intro
-  order: 5
+  order: 3
 ---
 # 💓React Key
 
@@ -12,31 +12,8 @@ key属性再列表渲染的时候起到关键作用
 
 开发时我们偶尔会出现一个报错，显然是因为我们没有给列表项添加key值
 
-```tsx
-import React from 'react';
+<code src="./Code.tsx">列表</code>
 
-type dtype = {
-  key: string;
-  value: string;
-};
-
-const dataSource: dtype[] = [
-  { key: 'key1', value: 'value1' },
-  { key: 'key2', value: 'value2' },
-];
-
-const Step4 = () => {
-  return (
-    <section>
-      {dataSource.map((item) => (
-        <div>{item.value}</div>
-      ))}
-    </section>
-  );
-};
-
-export default Step4;
-```
 ![reactkey](./pic1.png "reactkey")
 
 常见的无效Key的情况：

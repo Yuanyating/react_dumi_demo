@@ -2,10 +2,10 @@
 nav:
   title: 问题
   path: /intro
-  order: 6
+  order: 4
 ---
 
-# 🐼ErrorBoundary
+# 💓ErrorBoundary
 
 > React.Component: Catching rendering errors with an error boundary
 
@@ -41,3 +41,10 @@ class ErrorBoundary extends React.Component {
 }
 ```
 
+React的错误机制自始至终是基于类组件的，特定的声明周期钩子：
+  - getDerivedStateFromError
+  - componentDidCatch
+
+> 函数式组件中目前还没有与 static getDerivedStateFromError 直接等同的东西。如果你想避免创建类式组件，请像上面那样编写一个 ErrorBoundary 组件，并在整个应用程序中使用它。或者使用 react-error-boundary 包来执行此操作。
+
+RIE：https://jser.pro/ddir/rie?reactVersion=18.3.1&snippetKey=ltglm2ylb7m8p6mb2c

@@ -9,7 +9,7 @@ nav:
 
 根据上述情况，React 提供了一种更符合使用习惯的优化方式，那就是 React.memo，这个 API 的作用就是让组件变成一个纯组件，也就是说，如果组件的 props 没有变化，那么就不会重新渲染。
 
-虽然`React.memo`可以优化组件性能，但是大部分情况下，即便不做任何优化，React 的性能也是足够的。因此对于简单组件和 props 常变的组件，通常不需要使用 memo。
+虽然`React.memo`可以优化组件性能，但是大部分情况下，即便不做任何优化，React 的性能也是足够的。因此对于简单组件和 props 常变的组件，通常不需要使用 memo。对于 props 变化频繁的组件，在比较 props 时候的开销反而会导致性能下降，
 
 除了上述提到的原因，不常使用 memo 的另一个原因是 React.memo 很容易被“破坏”
 
@@ -19,10 +19,17 @@ nav:
 
 解决方案是自定义比较函数，通过 `React.memo` 的第二个参数传入，可以实现更复杂的比较逻辑。
 
-```yml
+```tsx
 import React from 'react';
 
-const MyComponent = React.memo( (props) => { /* 组件逻辑 */ }, (prevProps, nextProps) => { // 自定义比较逻辑 return prevProps.someProp === nextProps.someProp; } );
+const MyComponent = React.memo(
+  (props) => {
+    /* 组件逻辑 */
+  },
+  (prevProps, nextProps) => {
+    // 自定义比较逻辑 return prevProps.someProp === nextProps.someProp;
+  },
+);
 
 export default MyComponent;
 ```
@@ -31,5 +38,4 @@ export default MyComponent;
 
 综上所述，可以知道在大型组件树中，某些子组件不需要每次父组件渲染的时候都重新渲染，这时候是使用 React.memo 的时机：
 
-<code src="./Code.tsx">memo示例</code>
-
+<code src="./Code.tsx">memo 示例</code>

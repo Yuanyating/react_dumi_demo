@@ -7,6 +7,25 @@ type Item = {
   menu: string[];
 };
 
+type Data = {
+  id: number;
+  title: string;
+  menu: string[];
+};
+
+const data: Data[] = [
+  {
+    id: 1,
+    title: '餐饮行业',
+    menu: ['快餐系列', '中餐系列', '西餐系列'],
+  },
+  {
+    id: 2,
+    title: '电竞行业',
+    menu: ['手游系列', '桌游系列'],
+  },
+];
+
 const mutateData = (data: Item[]) => {
   return data.map((item) => ({
     ...item,
@@ -18,18 +37,16 @@ const MockRequest = () => {
   const [dataSource, setDataSource] = useState<Item[]>([]);
   console.log('refresh');
   const handleClick = () => {
-    fetch('http://rap2api.taobao.org/app/mock/259267/getMenu')
-      .then((data) => {
-        return data.json();
-      })
-      .then((res) => {
-        setDataSource(res?.data);
-        const newData = mutateData(res?.data);
-        // setDataSource([...dataSource, ...newData]);
-        setDataSource((prevState) => {
-          return [...prevState, ...newData];
-        });
+    return new Promise((resolve) => {
+      resolve(data);
+    }).then((data: Data[]) => {
+      setDataSource(data);
+      const newData = mutateData(data);
+      // setDataSource([...dataSource, ...newData]);
+      setDataSource((prevState: Data[]) => {
+        return [...prevState, ...newData];
       });
+    });
   };
 
   return (
@@ -39,7 +56,7 @@ const MockRequest = () => {
         bordered
         style={{ marginTop: 16 }}
         dataSource={dataSource}
-        renderItem={(item) => (
+        renderItem={(item: Data) => (
           <List.Item>
             <Typography.Text mark>{item.title}</Typography.Text>
             <Typography.Paragraph>

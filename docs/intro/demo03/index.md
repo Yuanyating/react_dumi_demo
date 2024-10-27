@@ -12,11 +12,10 @@ nav:
 
   <code src="./Code1.tsx">访问 DOM 元素 </code>
 
-
 - 持久化变量  
-  `useRef` 可以用来存储不需要重新渲染的值，这些值在组件重新渲染时不会改变。这和 useState 不同，useRef 改变不会引发组件重新渲染。示例：定时器
+  `useRef` 可以用来存储不需要重新渲染的值，这些值在组件重新渲染时不会改变。这和 useState 不同，useRef 改变不会引发组件重新渲染，适用于存储不需要影响 UI 的数据。示例：定时器
 
-  <code src="./Code2.tsx">持久化变量</code>
+  <code src="./Code2.tsx">持久化计数器</code>
 
 - 闭包陷阱  
   在异步函数中（如 setTimeout），由于闭包的特性，可能会捕获到旧的状态值。useRef 可以帮助持久化最新的值，以避免捕获到旧的状态。

@@ -11,12 +11,11 @@ nav:
 
 <code src="./Code1.tsx">改进前</code>
 
-
 从结果可看出，父组件无关的 state 变化，依然会触发子组件的重复渲染
 
 利用 Children 改变组件结构：
 
-<code src="./Code1.tsx">改进后</code>
+<code src="./Code2.tsx">改进后</code>
 
 这种方式是利用 React 自身的优化算法，规避了渲染。
 

@@ -1,6 +1,10 @@
 import { Collapse, Modal } from 'antd';
-import React, { useMemo } from 'react';
-import { useState } from 'react';
+import React, { useMemo, useState } from 'react';
+
+const items = [
+  { key: '1', label: 'collapse 1', children: <div>1</div> },
+  { key: '2', label: 'collapse 2', children: <div>2</div> },
+];
 
 const Demo = () => {
   const [activeKeys, setActiveKeys] = useState<string[]>([]);
@@ -18,14 +22,11 @@ const Demo = () => {
   };
 
   return (
-    <Collapse activeKey={activeKeys} onChange={handleChange}>
-      <Collapse.Panel key="1" header="collapse 1">
-        1
-      </Collapse.Panel>
-      <Collapse.Panel key="2" header="collapse 2">
-        2
-      </Collapse.Panel>
-    </Collapse>
+    <Collapse
+      activeKey={activeKeys}
+      onChange={handleChange}
+      items={items}
+    ></Collapse>
   );
 };
 

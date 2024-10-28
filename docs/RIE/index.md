@@ -2,7 +2,7 @@
 nav:
   title: RIE
   path: /rie
-  order: 0
+  order: 1
 ---
 
 ## React Internals Explorer
